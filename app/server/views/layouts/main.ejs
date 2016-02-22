@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Kris + Razi</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://use.typekit.net/zel2wwd.js"></script>
+        <script>try{Typekit.load(/*{ async: true }*/);}catch(e){}</script>
+        <% if (settings.env !== 'development') { %>
+            <link rel="stylesheet" type="text/css" href="/styles/app-<%- webpackHash() %>.min.css">
+        <% } %>
+        <% include ../partials/og-tags %>
+        <% include ../partials/analytics %>
+        <meta name="google-site-verification" content="zI3uBgONsBdaZ-ndtwd6YnfhMuZb2goyqVNS5QAUkxU">
+    </head>
+    <body>
+        <%- body %>
+        <% if (settings.env !== 'development') { %>
+            <script src="/scripts/app-<%- webpackHash() %>.min.js"></script>
+        <% } else { %>
+            <script src="/scripts/app.js"></script>
+        <% } %>
+    </body>
+</html>
