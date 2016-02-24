@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
                 }
             }
         },
-        answer: {
+        attending: {
             type: DataTypes.BOOLEAN, // Yes or no.
             allowNull: false
         },

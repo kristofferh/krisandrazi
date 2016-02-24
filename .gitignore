@@ -1,6 +1,5 @@
 .env
 node_modules
-config/creds.js
 npm-debug.log
 coverage
 
