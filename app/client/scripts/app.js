@@ -1,4 +1,4 @@
-require('../styles/base');
+import '../styles/base';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
