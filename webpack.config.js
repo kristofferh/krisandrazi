@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
     entry: [
@@ -8,9 +9,9 @@ const config = {
     ],
     devtool: 'eval-source-map',
     output: {
-        path: path.join(__dirname, '/public/scripts'),
+        path: path.join(__dirname, '/public'),
         filename: 'app.js',
-        publicPath: '/scripts'
+        publicPath: '/'
     },
     module: {
         loaders: [
@@ -24,7 +25,11 @@ const config = {
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'app/client/index.ejs'
+        })
     ],
     resolve: {
         extensions: ['', '.js', '.css', '.scss']

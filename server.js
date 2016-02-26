@@ -7,8 +7,6 @@ var passport = require('passport');
 var helmet = require('helmet');
 var cookieParser = require('cookie-parser');
 
-var webpackHash = require('./app/utils/assets-hash');
-
 var env = process.env.NODE_ENV || 'development';
 var engine = require('ejs-mate');
 
@@ -28,8 +26,6 @@ app.use(bodyParser.urlencoded({
 
 // Use cookie parser
 app.use(cookieParser());
-
-app.use(webpackHash('./config/webpack.stats.json'));
 
 if (env === 'development') {
     var webpack = require('webpack');
@@ -54,7 +50,6 @@ if (env === 'development') {
     app.use(webpackHotMiddleware(compiler));
 }
 
-
 // Use the passport package in our application
 app.use(passport.initialize());
 
@@ -73,6 +68,11 @@ var port = process.env.PORT || 3000;
 
 // Register routes
 app.use('/', siteRoutes);
+
+// 404.
+app.use(function(req, res) {
+    res.status(404).send('404: Page not Found');
+});
 
 models.sequelize.sync().then(function () {
     app.listen(port);

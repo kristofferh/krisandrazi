@@ -10,7 +10,7 @@ const config = {
     output: {
         path: path.join(__dirname, '/public/scripts'),
         filename: 'app-[hash].min.js',
-        publicPath: '/scripts'
+        publicPath: '/'
     },
     module: {
         loaders: [
