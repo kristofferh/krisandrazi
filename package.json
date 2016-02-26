@@ -8,16 +8,12 @@
   "scripts": {
     "test": "echo Nope",
     "start": "nodemon --exec babel-node server.js --debug --ignore 'app/client/*' --ignore 'public/*'",
-    "build": "rimraf public && webpack --progress --colors --config ./webpack.config.production.js"
+    "build": "rimraf public && webpack --progress --colors --config ./webpack.config.production.js",
+    "start-prod": "NODE_ENV=staging node server.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/kristofferh/krisandrazi"
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
   },
   "dependencies": {
     "analytics.js-loader": "^2.1.2",

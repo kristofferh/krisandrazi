@@ -1,14 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const StatsPlugin = require('stats-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
     entry: [
         path.join(__dirname, 'app/client/scripts/app.js')
     ],
     output: {
-        path: path.join(__dirname, '/public/scripts'),
+        path: path.join(__dirname, '/public'),
         filename: 'app-[hash].min.js',
         publicPath: '/'
     },
@@ -23,16 +23,16 @@ const config = {
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
-        new ExtractTextPlugin('../styles/app-[hash].min.css'),
+        new ExtractTextPlugin('app-[hash].min.css'),
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
                 warnings: false,
                 screw_ie8: true
             }
         }),
-        new StatsPlugin('../../config/webpack.stats.json', {
-            source: false,
-            modules: false
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'app/client/index.ejs'
         })
     ],
     resolve: {
