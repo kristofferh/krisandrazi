@@ -1,3 +1,10 @@
-import '../styles/base';
+require('../styles/base');
 
-import './components/signup';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Home from './components/home';
+
+ReactDOM.render(
+  <Home />,
+  document.getElementById('party')
+);

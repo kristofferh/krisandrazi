@@ -16,7 +16,7 @@ const config = {
     module: {
         loaders: [
             { test: /\.js?$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ },
-            { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+            { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
             { test: /\.json$/, loader: 'json-loader' },
             { test: /\.css$/, loader: 'style!css!postcss' },
             { test: /\.scss$/, loader: 'style!css!postcss!sass' }
