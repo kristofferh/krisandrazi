@@ -3,12 +3,10 @@
 // Get the packages we need
 var express = require('express');
 var bodyParser = require('body-parser');
-var passport = require('passport');
 var helmet = require('helmet');
 var cookieParser = require('cookie-parser');
 
 var env = process.env.NODE_ENV || 'development';
-var engine = require('ejs-mate');
 
 // Routes
 var siteRoutes = require('./app/server/routes/site');
@@ -50,17 +48,11 @@ if (env === 'development') {
     app.use(webpackHotMiddleware(compiler));
 }
 
-// Use the passport package in our application
-app.use(passport.initialize());
-
 app.use(helmet.hsts({
     maxAge: 7776000000,
     includeSubdomains: true
 }));
 
-app.engine('ejs', engine);
-app.set('views', __dirname + '/app/server/views');
-app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 // Use environment defined port or 3000

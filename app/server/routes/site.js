@@ -7,11 +7,6 @@ module.exports = (function() {
 
     var router = express.Router();
 
-    // router.route('/')
-    //     .get(function(req, res) {
-    //         res.sendFile(path.join(__dirname, './public/index.html'));
-    //     });
-
     router.route('/rsvp')
         .get(function(req, res) {
             console.log('hi');
