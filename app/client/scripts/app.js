@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../styles/base';
 import Home from './components/home/';
-import Calendar from './components/calendar/';
+import Venue from './components/venue/';
 
 let App = React.createClass({
 
@@ -10,7 +10,7 @@ let App = React.createClass({
         return (
             <div>
                 <Home />
-                <Calendar />
+                <Venue />
             </div>
         );
     }
