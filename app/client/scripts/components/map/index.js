@@ -1,7 +1,7 @@
 import React from 'react';
 import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
 
-export default function Map (props) {
+export default function Map () {
     return (
         <section style={{height: '100%'}}>
             <GoogleMapLoader
