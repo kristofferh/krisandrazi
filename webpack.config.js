@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = {
     entry: [
         'webpack-hot-middleware/client?reload=true',
-        path.join(__dirname, 'app/client/scripts/app.js')
+        path.join(__dirname, 'app/client/scripts/index.js')
     ],
     devtool: 'eval-source-map',
     output: {

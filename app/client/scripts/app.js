@@ -1,22 +1,19 @@
-import '../styles/base';
-
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Home from './components/home';
-import {IntlProvider, addLocaleData} from 'react-intl';
 
-import es from 'react-intl/lib/locale-data/es';
+import '../styles/base';
+import Home from './components/home/';
+import Calendar from './components/calendar/';
 
-addLocaleData(es);
+let App = React.createClass({
 
+    render() {
+        return (
+            <div>
+                <Home />
+                <Calendar />
+            </div>
+        );
+    }
+});
 
-const esMessages = {
-    'greeting': '¡Hola! {name} ¿Cómo estás hoy?'
-};
-
-ReactDOM.render(
-    <IntlProvider locale='en' messages={esMessages}>
-        <Home />
-    </IntlProvider>,
-  document.getElementById('party')
-);
+export default App;

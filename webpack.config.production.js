@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
     entry: [
-        path.join(__dirname, 'app/client/scripts/app.js')
+        path.join(__dirname, 'app/client/scripts/index.js')
     ],
     output: {
         path: path.join(__dirname, '/public'),
