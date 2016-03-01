@@ -5,7 +5,7 @@ class Row extends Component {
 
     constructor(props) {
         super(props);
-        // this.displayName = 'Row';
+        this.displayName = 'Row';
     }
 
     render() {
@@ -13,7 +13,8 @@ class Row extends Component {
             <div id={this.props.id} className={classNames(
                 'row',
                 this.props.className
-            )}
+                )}
+                style={this.props.style}
             >
               {this.props.children}
             </div>
@@ -24,7 +25,8 @@ class Row extends Component {
 
 Row.propTypes = {
     className: React.PropTypes.string,
-    id: React.PropTypes.string
+    id: React.PropTypes.string,
+    style: React.PropTypes.object
 };
 
-export {Row};
+export default Row;

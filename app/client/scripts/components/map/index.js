@@ -2,22 +2,33 @@ import React from 'react';
 import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
 
 export default function Map () {
+    const glasserie = {lat: 40.737722, lng: -73.956176};
     return (
-        <section style={{height: '100%'}}>
+        <section style={{height: '100vh', width: '100vw'}}>
             <GoogleMapLoader
                 containerElement = {
                     <div
                         {...this.props}
-                        style={{ height: '100%' }}
+                        style={{
+                            height: '100%'
+                        }}
                     />
                 }
 
                 googleMapElement={
                     <GoogleMap
-                        ref={(map) => console.log(map)}
-                        defaultZoom={3}
-                        defaultCenter={{lat: -25.363882, lng: 131.044922}}
-                    />
+                        defaultZoom={13}
+                        defaultCenter={glasserie}
+                        defaultOptions={{
+                            scrollwheel: false,
+                            styles: require('./styles.json')
+                        }}
+                    >
+                        <Marker
+                            defaultPosition={glasserie}
+                            title="Click to zoom"
+                        />
+                    </GoogleMap>
                 }
             />
         </section>

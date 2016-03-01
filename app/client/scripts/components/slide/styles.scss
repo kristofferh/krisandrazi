@@ -1,0 +1,13 @@
+.slide {
+    margin: auto;
+
+    &--full-width {
+        .slide__container {
+            padding: 0;
+        }
+    }
+
+    &--full-height {
+        min-height: 100vh;
+    }
+}

@@ -1,17 +1,15 @@
 import React from 'react';
 import Map from '../map';
-import {Row} from '../grid';
+import Slide from '../slide';
 
 let Venue = React.createClass({
 
     render() {
         return (
-            <div>
-                <Row className='hey'>
-                    <Map />
-                    {'Venue'}
-                </Row>
-            </div>
+            <Slide background='#000' className='slide--full-height slide--full-width'>
+                <Map />
+                {'Venue'}
+            </Slide>
         );
     }
 });

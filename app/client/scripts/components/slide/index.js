@@ -1,7 +1,10 @@
 import {default as React, Component} from 'react';
 import ClassNames from 'classnames';
 
-import {Row, Column} from 'app/components/grid';
+import './styles';
+
+import Row from '../row';
+import Column from '../column';
 
 class Slide extends Component {
     constructor(props) {
@@ -13,15 +16,13 @@ class Slide extends Component {
         return(
             <Row id={this.props.id}
                 className={ClassNames(
-                  'party-slide',
-                  this.props.parentClassName
+                  'slide',
+                  this.props.className
                 )}
                 style={{background: this.props.background}}
             >
-                <Column xs='12' className='party-slide__container'>
-                    <Row className={ClassNames(this.props.className)}>
-                        {this.props.children}
-                    </Row>
+                <Column xs='12' className='slide__container'>
+                    {this.props.children}
                 </Column>
             </Row>
         );

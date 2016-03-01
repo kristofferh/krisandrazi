@@ -25,6 +25,7 @@
     "express": "^4.13.3",
     "express-session": "^1.11.3",
     "helmet": "^1.1.0",
+    "lodash._pickbyarray": "^3.0.2",
     "mysql": "^2.8.0",
     "normalize.css": "^3.0.3",
     "passport": "^0.3.2",
