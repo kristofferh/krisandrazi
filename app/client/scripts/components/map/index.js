@@ -42,7 +42,7 @@ export default class Map extends Component {
                         />
                     }
 
-                    googleMapElement={
+                    googleMapElement = {
                         <GoogleMap
                             ref={(map) => (this._googleMapComponent = map)}
                             defaultZoom={13}
@@ -56,7 +56,6 @@ export default class Map extends Component {
                                 defaultPosition = {glasserie}
                                 defaultAnimation = {2}
                                 title = 'Glasserie'
-                                defaultIcon = { require('./pizzaparty.gif') }
                             />
                         </GoogleMap>
                     }
