@@ -4,7 +4,7 @@ import Slide from '../slide';
 import Row from '../row';
 import Column from '../column';
 
-let Venue = React.createClass({
+let Info = React.createClass({
 
     render() {
         return (
@@ -25,4 +25,4 @@ let Venue = React.createClass({
     }
 });
 
-export default Venue;
+export default Info;
