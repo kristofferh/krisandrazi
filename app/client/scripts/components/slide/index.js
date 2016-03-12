@@ -8,18 +8,18 @@ import Column from '../column';
 
 class Slide extends Component {
     constructor(props) {
-        super(props);
+        super (props);
         this.displayName = 'Slide';
     }
 
     render() {
-        return(
+        return (
             <Row id={this.props.id}
                 className={ClassNames(
                   'slide',
+                  {[`slide--${this.props.background}`]: this.props.background},
                   this.props.className
                 )}
-                style={{background: this.props.background}}
             >
                 <Column xs='12' className='slide__container'>
                     {this.props.children}

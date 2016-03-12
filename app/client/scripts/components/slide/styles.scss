@@ -1,13 +1,20 @@
+@import 'app/client/styles/structure/variables';
+
 .slide {
-    margin: auto;
+    margin: 0;
 
     &--full-width {
         .slide__container {
-            padding: 0;
+            // padding: 0;
         }
     }
 
     &--full-height {
         min-height: 100vh;
+    }
+
+    &--dark {
+        background: $black;
+        color: $white;
     }
 }

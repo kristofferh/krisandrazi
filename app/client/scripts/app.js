@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/base';
 import Navigation from './components/navigation/';
 import Home from './components/home/';
-import Venue from './components/venue/';
+import Info from './components/info/';
 
 let App = React.createClass({
 
@@ -12,7 +12,7 @@ let App = React.createClass({
             <div>
                 <Navigation />
                 <Home />
-                <Venue />
+                <Info />
             </div>
         );
     }
