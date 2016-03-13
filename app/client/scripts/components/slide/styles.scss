@@ -3,18 +3,27 @@
 .slide {
     margin: 0;
 
-    &--full-width {
-        .slide__container {
-            // padding: 0;
-        }
+    .slide__container {
+        margin: 0;
     }
 
     &--full-height {
         min-height: 100vh;
+
+        .row {
+            min-height: 100vh;
+        }
     }
 
     &--dark {
         background: $black;
         color: $white;
     }
+
+    .content-container {
+        max-width: 960px;
+        margin: auto;
+    }
+
+
 }

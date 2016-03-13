@@ -8,8 +8,8 @@ let Info = React.createClass({
 
     render() {
         return (
-            <Slide background='dark' className='slide--full-height slide--full-width'>
-                <Row className='center-xs'>
+            <Slide background='dark' id='info'>
+                <Row className='center-xs content-container'>
                     <Column xs='12' sm='6'>
                         <h1>Party!</h1>
                         <p>{'Hey! We\'re getting married! And to celebrate we are throwing a party.'}</p>

@@ -1,4 +1,5 @@
 import {default as React, Component} from 'react';
+import ClassNames from 'classnames';
 
 import './styles';
 
@@ -48,12 +49,14 @@ export default class Navigation extends Component {
 
     render() {
         return (
-            <nav className={'main-nav ' + ' ' + ((this.state.showNav) ? 'show-nav' : '')}>
-                <a href='#info' className='nav-item'><span className='text'>{'Info'}</span></a>
-                <a href='#rsvp' className='nav-item'><span className='text'>{'RSVP'}</span></a>
-                <span className='nav-item close' onClick={this.handleCloseClick}>
-                    <span className='close-btn'></span>
-                </span>
+            <nav className={ClassNames('main-nav', {'show-nav': this.state.showNav} )}>
+                <div className='nav-container'>
+                    <a href='#info' className='nav-item'><span className='text'>{'Info'}</span></a>
+                    <a href='#rsvp' className='nav-item'><span className='text'>{'RSVP'}</span></a>
+                    <span className='nav-item close' onClick={this.handleCloseClick}>
+                        <span className='close-btn'></span>
+                    </span>
+                </div>
             </nav>
         );
     }

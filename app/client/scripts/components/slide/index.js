@@ -14,17 +14,17 @@ class Slide extends Component {
 
     render() {
         return (
-            <Row id={this.props.id}
-                className={ClassNames(
-                  'slide',
-                  {[`slide--${this.props.background}`]: this.props.background},
-                  this.props.className
-                )}
+            <section id={this.props.id} className={ClassNames(
+                'slide',
+                {[`slide--${this.props.background}`]: this.props.background},
+                this.props.className)}
             >
-                <Column xs='12' className='slide__container'>
-                    {this.props.children}
-                </Column>
-            </Row>
+                <Row className={ClassNames('slide__container', this.props.rowClassNames)}>
+                    <Column xs='12'>
+                        {this.props.children}
+                    </Column>
+                </Row>
+            </section>
         );
     }
 }
@@ -33,7 +33,7 @@ Slide.propTypes = {
     background: React.PropTypes.string,
     className: React.PropTypes.string,
     id: React.PropTypes.string,
-    parentClassName: React.PropTypes.string
+    rowClassNames: React.PropTypes.string
 };
 
 export default Slide;

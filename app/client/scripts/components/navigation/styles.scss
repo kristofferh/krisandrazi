@@ -2,19 +2,14 @@
 
 .main-nav {
     background-color: $black;
-
-    $greens: (#D9F1C1, #263B00, #4D7A00, #1E2E01, #203300);
-    $blues: (#003554, #002033, #00253B, #001D2E, #004C7A);
-    $reds: (#330016, #3B0019, #2E0014, #540024, #7A0033);
-    $grays: (#333233, #3B3A3A, #323232, #424141, #4B4C4C);
-    $color-list: join($greens, $blues);
+    color: $white;
 
     height: 60px;
     position: fixed;
     width: 100%;
     top: 0;
     transform: translate3d(0, 0, 0);
-    transition: transform 0.3s ease, height 0.3s ease, background-color 1s ease;
+    transition: transform 0.3s ease, height 0.3s ease;
     overflow: hidden;
     z-index: $z-index-max;
     display: flex;
@@ -79,11 +74,15 @@
         }
     }
 
+    .nav-container {
+        max-width: 960px;
+    }
+
     .nav-item {
         position: absolute;
         line-height: 1;
         text-align: center;
-        color: #fff;
+        color: $white;
         font-size: 2rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.5);
         text-transform: uppercase;
@@ -103,10 +102,6 @@
             opacity: 1;
             order: 0;
             border-bottom-color: transparent;
-        }
-
-        &:hover:before {
-            // @include background-color-animator($greens, 0.5, infinite, ease);
         }
 
         &:before {
