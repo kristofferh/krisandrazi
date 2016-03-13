@@ -1,12 +1,14 @@
 import React from 'react';
 import Slide from '../slide';
 
+import crest from './crested.svg';
+
 let Home = React.createClass({
 
     render() {
         return (
             <Slide className='slide--full-height' rowClassNames='center-xs middle-xs'>
-                {'Home'}
+                <span className='home-stuff' dangerouslySetInnerHTML={{__html: crest}} />
             </Slide>
         );
     }

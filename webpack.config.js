@@ -20,7 +20,8 @@ const config = {
             { test: /\.json$/, loader: 'json-loader' },
             { test: /\.css$/, loader: 'style!css!postcss' },
             { test: /\.scss$/, loader: 'style!css!postcss!sass' },
-            { test: /\.(gif|png|jpg)$/, loader: 'url-loader?limit=8192' }
+            { test: /\.(gif|png|jpg)$/, loader: 'url-loader?limit=8192' },
+            { test: /\.svg$/, loader: 'svg-inline' }
         ]
     },
     plugins: [

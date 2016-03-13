@@ -18,7 +18,9 @@ const config = {
             { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
             { test: /\.json$/, loader: 'json-loader' },
             { test: /\.css$/, loader: 'style!css!postcss' },
-            { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!postcss!sass') }
+            { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!postcss!sass') },
+            { test: /\.(gif|png|jpg)$/, loader: 'url-loader?limit=8192' },
+            { test: /\.svg$/, loader: 'svg-inline' }
         ]
     },
     plugins: [
