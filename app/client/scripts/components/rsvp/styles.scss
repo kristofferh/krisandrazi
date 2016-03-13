@@ -1,4 +1,5 @@
 .flat-input {
+    box-sizing: border-box;
     background: transparent;
     border: none;
     border-radius: 0;
@@ -6,12 +7,10 @@
     padding: 5px 5px 6px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.75);
     color: #fff;
-    font-size: 20px;
     outline: none;
     width: 100%;
 
-    &:active,
-    &:hover {
+    &:focus {
         border-bottom: 2px solid rgba(255, 255, 255, 1);
         padding-bottom: 5px;
     }
@@ -36,8 +35,6 @@
 .flat-button {
     background: rgba(255, 255, 255, 0.1);
     border: none;
-    font-size: 20px;
-    border-radius: 2px;
     padding: 3px 10px;
     color: #fff;
     margin-left: 10px;

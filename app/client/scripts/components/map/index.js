@@ -7,6 +7,7 @@ export default class Map extends Component {
 
     constructor(props, context) {
         super(props, context);
+        this.handleWindowResize = this.handleWindowResize.bind(this);
     }
 
     componentDidMount() {
@@ -24,8 +25,7 @@ export default class Map extends Component {
     }
 
     handleWindowResize() {
-        // console.log(this._googleMapComponent);
-        // triggerEvent(this._googleMapComponent, 'resize');
+        triggerEvent(this._googleMapComponent, 'resize');
     }
 
     render() {
