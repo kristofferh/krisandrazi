@@ -1,0 +1,7 @@
+.doohickey {
+    transition: all 0.2s ease;
+
+    &.hide {
+        opacity: 0;
+    }
+}
