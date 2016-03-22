@@ -2,11 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
     var RSVP = sequelize.define('RSVP', {
-        firstName: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        lastName: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -26,14 +22,8 @@ module.exports = function(sequelize, DataTypes) {
         guest: {
             type: DataTypes.BOOLEAN
         },
-        guestFirstName: {
+        guestName: {
             type: DataTypes.STRING
-        },
-        guestLastName: {
-            type: DataTypes.STRING
-        },
-        comment: {
-            type: DataTypes.TEXT
         }
     });
 

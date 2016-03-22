@@ -5,6 +5,7 @@ var models = require('../models/');
 var postRSVP = function(req, res) {
     var email = req.body.email;
 
+    console.log(email);
     // Insert into db.
     models.RSVP.create({
         email: email
