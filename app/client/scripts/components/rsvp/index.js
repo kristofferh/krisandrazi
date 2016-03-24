@@ -1,5 +1,6 @@
 import {default as React, Component} from 'react';
 import request from 'superagent';
+import classNames from 'classnames';
 import Slide from '../slide';
 import Row from '../row';
 import Column from '../column';
@@ -12,11 +13,14 @@ export default class RSVP extends Component {
         super(props);
         this.state = {
             name: '',
-            email: ''
+            email: '',
+            guest: false
         };
+        console.log(this.state);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handleGuestChange = this.handleGuestChange.bind(this);
     }
 
     getFormData() {
@@ -29,9 +33,8 @@ export default class RSVP extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.isEmail(this.state.email));
         if (!this.isNotBlank(this.state.name)) {
-            this.setState({nameError: 'Name shouldn\'t be blank'});
+            this.setState({nameError: 'Name shouldn\'t be blank!'});
         }
         this.send();
     }
@@ -43,6 +46,15 @@ export default class RSVP extends Component {
             this.setState({name: e.target.value.trim()});
         } else {
             this.setState({nameError: 'Name shouldn\t be blank'});
+        }
+    }
+
+    handleGuestChange(e) {
+        let el = e.target;
+        if (el.id === 'guestYes') {
+            this.setState({guest: true});
+        } else {
+            this.setState({guest: false});
         }
     }
 
@@ -101,18 +113,20 @@ export default class RSVP extends Component {
                                     <input name='answer' type='radio' ref='answerNo'/>Sorry, can't make it :(
                                 </label>
                             </div>
-                            <div className='form-group guest'>
-                                Are you bringing a guest?
-                                <label className='checkbox-inline'>
-                                    <input name='guest' type='radio' ref='guestYes'/>Yes
-                                </label>
-                                <label className='checkbox-inline'>
-                                    <input name='guest' type='radio' ref='guestNo' defaultChecked/>No
-                                </label>
-                            </div>
-                            <div className='form-group guest'>
-                                <label className='inline-label' htmlFor='guestName'>Guest's name</label>
-                                <input type='text' id='guestName' ref='guestName' className='flat-input' />
+                            <div className='form-group--conditional'>
+                                <div className='form-group guest'>
+                                    {'Are you bringing a guest?'}
+                                    <label className='checkbox-inline'>
+                                        <input name='guest' type='radio' id='guestYes' onChange={this.handleGuestChange} value='yes'/>{'Yes'}
+                                    </label>
+                                    <label className='checkbox-inline'>
+                                        <input name='guest' type='radio' id='guestNo' defaultChecked onChange={this.handleGuestChange} value='no'/>{'No'}
+                                    </label>
+                                </div>
+                                <div className={classNames('form-group--conditional', 'guest', {'closed': !this.state.guest})}>
+                                    <label className='inline-label' htmlFor='guestName'>{'Guest\'s name'}</label>
+                                    <input type='text' id='guestName' ref='guestName' className='flat-input' />
+                                </div>
                             </div>
                             <button type='submit' className='flat-button'>Submit</button>
                         </form>
