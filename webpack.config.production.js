@@ -9,7 +9,7 @@ const config = {
     ],
     output: {
         path: path.join(__dirname, '/public'),
-        filename: 'app-[hash].min.js',
+        filename: 'app.min.js',
         publicPath: '/'
     },
     module: {
@@ -25,7 +25,7 @@ const config = {
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
-        new ExtractTextPlugin('app-[hash].min.css'),
+        new ExtractTextPlugin('app.min.css'),
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
                 warnings: false,
@@ -34,7 +34,8 @@ const config = {
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'app/client/index.ejs'
+            template: 'app/client/index.ejs',
+            hash: true
         })
     ],
     resolve: {

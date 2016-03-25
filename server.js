@@ -5,6 +5,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var cookieParser = require('cookie-parser');
+var favicon = require('serve-favicon');
 
 var env = process.env.NODE_ENV || 'development';
 
@@ -16,6 +17,9 @@ var models = require('./app/server/models');
 
 // Create our Express application
 var app = express();
+
+// Serve favicon
+app.use(favicon(__dirname + '/public/favicon.ico'));
 
 // Use the body-parser package in our application
 app.use(bodyParser.urlencoded({
@@ -53,13 +57,13 @@ app.use(helmet.hsts({
     includeSubdomains: true
 }));
 
+// Register routes
+app.use('/', siteRoutes);
+
 app.use(express.static(__dirname + '/public'));
 
 // Use environment defined port or 3000
 var port = process.env.PORT || 3000;
-
-// Register routes
-app.use('/', siteRoutes);
 
 // 404.
 app.use(function(req, res) {
