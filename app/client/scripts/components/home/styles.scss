@@ -1,5 +1,6 @@
 .doohickey {
     transition: all 0.2s ease;
+    transform-origin: 50% 50%;
 
     &.hide {
         opacity: 0;
@@ -28,6 +29,64 @@
         &:nth-child(#{$i}) {
             animation-delay: (0.25s * $i);
         }
+    }
+}
+
+.wave {
+    fill: none;
+    stroke-dasharray: 50;
+    animation: wavvy 1s linear alternate infinite;
+    @for $i from 1 through 8 {
+        &:nth-child(#{$i}) {
+            animation-delay: (0.05s * $i);
+        }
+    }
+}
+
+.wiggler {
+    fill: none;
+    stroke-dasharray: 50;
+    transform: translate3d(-3px, 0, 0);
+    animation: line-drawing 1s linear alternate infinite;
+    @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+            animation-delay: (0.25s * $i);
+        }
+    }
+}
+
+.boat {
+    transform-origin: 50% 50%;
+    animation: boat-rocking 2s linear alternate infinite;
+}
+
+@keyframes(boat-rocking) {
+    0% {
+        transform: rotate(10deg) translate3d(-8px, 0, 0);
+    }
+
+    50% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg) translate3d(8px, 0, 0);
+    }
+}
+
+@keyframes(wavvy) {
+    to {
+        stroke-dashoffset: 50;
+        transform: translate3d(-8px, 2px, 0);
+        opacity: 0;
+    }
+}
+
+@keyframes(line-drawing) {
+    to {
+        stroke-dashoffset: 50;
+        transform: translate3d(-3px, -3px, 0);
+        opacity: 0;
     }
 }
 

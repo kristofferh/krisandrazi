@@ -1,4 +1,5 @@
 import {default as React, Component} from 'react';
+import throttle from 'lodash.throttle';
 import Slide from '../slide';
 
 import crest from './crested.svg';
@@ -13,6 +14,7 @@ export default class Home extends Component{
             window.matchMedia('(min-width: 1000px)'),
             window.matchMedia('(min-width: 600px)')
         ];
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
     initDoohickies() {
@@ -27,6 +29,7 @@ export default class Home extends Component{
         this.partyHat = document.getElementById('party-hat');
         this.pitsha = document.getElementById('pitsha');
         this.wine = document.getElementById('wine');
+        this.donut = document.getElementById('donut');
     }
 
     mediaQueryResponse() {
@@ -70,7 +73,7 @@ export default class Home extends Component{
     }
 
     componentDidMount() {
-
+        let ticking = false;
         this.initDoohickies();
 
         // Media queries.
@@ -78,6 +81,28 @@ export default class Home extends Component{
             this.mediaQueryResponse(this.mqls[i]);
             this.mqls[i].addListener(this.mediaQueryResponse.bind(this));
         }
+
+        window.addEventListener('scroll', (e) => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.handleScroll(e.srcElement.body.scrollTop);
+                    ticking = false;
+                });
+            }
+            ticking = true;
+        });
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll(top) {
+        let style = `rotate(${top}deg)`;
+        this.donut.style.webkitTransform = style;
+        this.donut.style.MozTransform = style;
+        this.donut.style.msTransform = style;
+        this.donut.style.transform = style;
     }
 
     render() {

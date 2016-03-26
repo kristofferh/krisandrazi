@@ -13,11 +13,11 @@ export default class Navigation extends Component {
     }
 
     componentWillMount() {
-        window.addEventListener('scroll', this.handleScroll, false);
+        window.addEventListener('scroll', this.handleScroll);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll, false);
+        window.removeEventListener('scroll', this.handleScroll);
     }
 
     handleScroll() {
