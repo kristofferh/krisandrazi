@@ -9,6 +9,7 @@
 
 .champer {
     transform-origin: 50% 50%;
+    -moz-transform-origin: 500px 437px;
 
     &.left-glass {
         animation: cheers-left 1.2s ease-out infinite alternate;
@@ -55,13 +56,18 @@
     }
 }
 
+#donut {
+    -moz-transform-origin: 769px 213px; // Fucking Firefox
+}
+
 .boat {
     transform-origin: 50% 50%;
+    -moz-transform-origin: 720px 62px;
     animation: boat-rocking 2s linear alternate infinite;
 }
 
 .toby {
-    transform-origin: 50% 50%;
+    transform-origin: 342px 481px;
     transform: scale(0.5) translate3d(-80px, -73px, 0) rotate(-5deg);
     animation: toby-peek 10s cubic-bezier(0.18, 0.89, 0.33, 1.01) forwards infinite;
     opacity: 0;

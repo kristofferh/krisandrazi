@@ -15,10 +15,10 @@ export default class Navigation extends Component {
 
     componentWillMount() {
         let ticking = false;
-        window.addEventListener('scroll', (e) => {
+        window.addEventListener('scroll', () => {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
-                    this.handleScroll(e.srcElement.body.scrollTop);
+                    this.handleScroll();
                     ticking = false;
                 });
             }
@@ -30,27 +30,20 @@ export default class Navigation extends Component {
         window.removeEventListener('scroll', this.handleScroll);
     }
 
-    handleScroll(top) {
+    handleScroll() {
         if (this.isAnimating) {
             return;
         }
+
         // Down
-        if (top > this.lastScroll /*&&
-            window.innerHeight + window.scrollY >
-                ((window.innerHeight * this.state.activeIndex) + window.innerHeight/2) */
-        ) {
+        if (window.scrollY > this.lastScroll) {
             this.setState({showNav: false});
-            // this.setActive(this.state.activeIndex + 1);
         // Up
-        } else if (top < this.lastScroll /*&&
-          window.innerHeight + window.scrollY <
-            ((window.innerHeight * this.state.activeIndex) - window.innerHeight/1.5) */
-        ) {
+        } else if (window.scrollY < this.lastScroll) {
             this.setState({showNav: true});
-            // this.setActive(this.state.activeIndex - 1);
         }
 
-        this.lastScroll = top;
+        this.lastScroll = window.scrollY;
     }
 
     render() {

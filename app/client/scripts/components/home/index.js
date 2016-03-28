@@ -82,10 +82,10 @@ export default class Home extends Component{
             this.mqls[i].addListener(this.mediaQueryResponse.bind(this));
         }
 
-        window.addEventListener('scroll', (e) => {
+        window.addEventListener('scroll', () => {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
-                    this.handleScroll(e.srcElement.body.scrollTop);
+                    this.handleScroll();
                     ticking = false;
                 });
             }
@@ -97,7 +97,8 @@ export default class Home extends Component{
         window.removeEventListener('scroll', this.handleScroll);
     }
 
-    handleScroll(top) {
+    handleScroll() {
+        let top = window.scrollY;
         let style = `rotate(${top}deg)`;
         this.donut.style.webkitTransform = style;
         this.donut.style.MozTransform = style;
