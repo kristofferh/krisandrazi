@@ -8,54 +8,60 @@ export default class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showNav: false
+            showNav: true
         };
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
     componentWillMount() {
-        window.addEventListener('scroll', this.handleScroll);
+        let ticking = false;
+        window.addEventListener('scroll', (e) => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.handleScroll(e.srcElement.body.scrollTop);
+                    ticking = false;
+                });
+            }
+            ticking = true;
+        });
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
     }
 
-    handleScroll() {
+    handleScroll(top) {
         if (this.isAnimating) {
             return;
         }
         // Down
-        if (window.scrollY > this.lastScroll /*&&
+        if (top > this.lastScroll /*&&
             window.innerHeight + window.scrollY >
                 ((window.innerHeight * this.state.activeIndex) + window.innerHeight/2) */
         ) {
-            console.log('down');
+            this.setState({showNav: false});
             // this.setActive(this.state.activeIndex + 1);
         // Up
-        } else if (window.scrollY < this.lastScroll /*&&
+        } else if (top < this.lastScroll /*&&
           window.innerHeight + window.scrollY <
             ((window.innerHeight * this.state.activeIndex) - window.innerHeight/1.5) */
         ) {
-            console.log('up');
+            this.setState({showNav: true});
             // this.setActive(this.state.activeIndex - 1);
         }
 
-        this.lastScroll = window.scrollY;
-    }
-
-    handleCloseClick() {
-        this.setState({showNav: false});
+        this.lastScroll = top;
     }
 
     render() {
         return (
             <nav className={ClassNames('main-nav', {'show-nav': this.state.showNav} )}>
                 <div className='nav-container'>
-                    <a href='#info' className='nav-item'><span className='text'>{'Info'}</span></a>
-                    <a href='#rsvp' className='nav-item'><span className='text'>{'RSVP'}</span></a>
-                    <span className='nav-item close' onClick={this.handleCloseClick}>
-                        <span className='close-btn'></span>
-                    </span>
+                    <a href='#home' className='logo nav-item'></a>
+                    <div className='nav'>
+                        <a href='#info' className='nav-item'>{'Info'}</a>
+                        <a href='#rsvp' className='nav-item'>{'RSVP'}</a>
+                    </div>
                 </div>
             </nav>
         );
