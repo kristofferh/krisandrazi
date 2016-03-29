@@ -16,37 +16,46 @@ export default class RSVP extends Component {
             email: '',
             guest: false
         };
-        console.log(this.state);
+
+        this.errors = false;
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleGuestChange = this.handleGuestChange.bind(this);
-    }
-
-    getFormData() {
-        return {
-            name: this.refs.name.value,
-            nameError: false,
-            email: this.refs.email.value
-        };
+        this.validateNameChange = this.validateNameChange.bind(this);
+        this.validateEmailChange = this.validateEmailChange.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        if (!this.isNotBlank(this.state.name)) {
-            this.setState({nameError: 'Name shouldn\'t be blank!'});
+        if(this.validateNameChange()) {
+            this.send();
         }
-        this.send();
     }
 
     handleNameChange(e) {
         let name = e.target.value.trim();
         if (this.isNotBlank(name)) {
             this.setState({nameError: false});
-            this.setState({name: e.target.value.trim()});
-        } else {
-            this.setState({nameError: 'Name shouldn\t be blank'});
         }
+        this.setState({name: name});
+    }
+
+    validateNameChange() {
+        if (!this.isNotBlank(this.state.name)) {
+            this.setState({nameError: 'Name shouldn\'t be blank'});
+            return false;
+        }
+        return true;
+    }
+
+    validateEmailChange() {
+        if (!this.isEmail(this.state.email)) {
+            this.setState({emailError: 'That email doesn\'t look right'});
+            return false;
+        }
+        return true;
     }
 
     handleGuestChange(e) {
@@ -59,7 +68,11 @@ export default class RSVP extends Component {
     }
 
     handleEmailChange(e) {
-        this.setState({email: e.target.value.trim()});
+        let email = e.target.value.trim();
+        if (this.isEmail(email)) {
+            this.setState({emailError: false});
+        }
+        this.setState({email: email});
     }
 
     isNotBlank(str) {
@@ -92,17 +105,18 @@ export default class RSVP extends Component {
             <Slide background='dark'>
                 <Row className='center-xs'>
                     <Column xs='12' sm='6'>
-                        <h2>RSVP</h2>
+                        <h2>{'RSVP'}</h2>
                         <p>{'Let us know if you\'re coming.'}</p>
                         <form className='rsvp-form' onSubmit={this.handleSubmit}>
                             <div className='form-group'>
-                                <label className='inline-label' htmlFor='name'>Your name</label>
+                                <label className='inline-label' htmlFor='name'>{'Your name:'}</label>
                                 {this.state.nameError ? <span className='error'>{this.state.nameError}</span> : null}
-                                <input type='text' ref='name' id='name' className='flat-input' onChange={this.handleNameChange} />
+                                <input type='text' id='name' className='flat-input' onBlur={this.validateNameChange} onChange={this.handleNameChange} />
                             </div>
                             <div className='form-group'>
-                                <label className='inline-label' htmlFor='email'>Your email</label>
-                                <input type='email' id='email' ref='email' className='flat-input' onChange={this.handleEmailChange} />
+                                <label className='inline-label' htmlFor='email'>{'Your email:'}</label>
+                                {this.state.emailError ? <span className='error'>{this.state.emailError}</span> : null}
+                                <input type='email' id='email' className='flat-input' onBlur={this.validateEmailChange} onChange={this.handleEmailChange} />
                             </div>
                             <div className='form-group'>
                                 Will you be joining us?
@@ -123,12 +137,12 @@ export default class RSVP extends Component {
                                         <input name='guest' type='radio' id='guestNo' defaultChecked onChange={this.handleGuestChange} value='no'/>{'No'}
                                     </label>
                                 </div>
-                                <div className={classNames('form-group--conditional', 'guest', {'closed': !this.state.guest})}>
-                                    <label className='inline-label' htmlFor='guestName'>{'Guest\'s name'}</label>
+                                <div className={classNames('form-group form-group--conditional', 'guest', {'closed': !this.state.guest})}>
+                                    <label className='inline-label' htmlFor='guestName'>{'Guest\'s name:'}</label>
                                     <input type='text' id='guestName' ref='guestName' className='flat-input' />
                                 </div>
                             </div>
-                            <button type='submit' className='flat-button'>Submit</button>
+                            <button type='submit' className='flat-button'>{'Submit →'}</button>
                         </form>
                     </Column>
                 </Row>
