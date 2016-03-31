@@ -11,9 +11,7 @@ class Row extends Component {
     render() {
         return (
             <div id={this.props.id} className={classNames(
-                'row',
-                this.props.className
-                )}
+                'row', this.props.className)}
                 style={this.props.style}
             >
               {this.props.children}

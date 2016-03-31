@@ -1,5 +1,4 @@
 * {
-    -webkit-font-smoothing: antialiased;
     box-sizing: inherit;
 
     &:before,
@@ -14,8 +13,9 @@ html {
 }
 
 body {
-    font-family: Times, Georgia, serif;
+    font-family: 'Courier New', monospace;
     font-weight: 300;
+    font-size: 15px;
 }
 
 ::-moz-selection {

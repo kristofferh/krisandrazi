@@ -1,5 +1,5 @@
 import {default as React, Component} from 'react';
-import throttle from 'lodash.throttle';
+import classNames from 'classnames';
 import Slide from '../slide';
 
 import crest from './crested.svg';
@@ -19,9 +19,12 @@ export default class Home extends Component{
 
     initDoohickies() {
         this.svg = document.getElementById('home-svg');
-        this.doohickies = this.svg.getElementsByClassName('doohickey');
-        this.medium = this.svg.getElementsByClassName('medium');
-        this.large = this.svg.getElementsByClassName('large');
+        this.svgContainer = document.getElementById('svg-container');
+        // IE doesn't understand this.svg.getElementsByClassName so query the
+        // document instead.
+        this.doohickies = document.getElementsByClassName('doohickey');
+        this.medium = document.getElementsByClassName('medium-nugget');
+        this.large = document.getElementsByClassName('large-nugget');
         this.fika = document.getElementById('fika');
         this.teepeecat = document.getElementById('teepeecat');
         this.sail = document.getElementById('sail');
@@ -42,25 +45,46 @@ export default class Home extends Component{
         }
     }
 
+    hasClass(el, className) {
+        if (el.classList) {
+            return el.classList.contains(className);
+        }
+    }
+
+    addClass(el, className) {
+        if (el.classList) {
+            el.classList.add(className);
+        }
+    }
+
+    removeClass(el, className) {
+        if (el.classList){
+            el.classList.remove(className);
+        }
+    }
+
     resetHidden() {
-        [].forEach.call(this.doohickies, function(doohickey) {
-            doohickey.classList.remove('hide');
+        [].forEach.call(this.doohickies, (doohickey) => {
+            // IE doesn't understand classList on SVGs, but I don't care about IE.
+            this.removeClass(doohickey, 'hide');
         });
     }
 
     hideBySize(els) {
-        [].forEach.call(els, function(doohickey) {
-            doohickey.classList.add('hide');
+        [].forEach.call(els, (doohickey) =>{
+            this.addClass(doohickey, 'hide');
         });
     }
 
     setLarge() {
         this.svg.setAttribute('viewBox', '0 0 1000 500');
+        this.svgContainer.style.paddingBottom = '50%';
         this.resetHidden();
     }
 
     setMedium() {
         this.svg.setAttribute('viewBox', '200 0 650 500');
+        this.svgContainer.style.paddingBottom = '76%';
         this.resetHidden();
         this.hideBySize(this.large);
     }
@@ -68,8 +92,15 @@ export default class Home extends Component{
     setSmall() {
         // Small screen, hide some of the flares.
         this.svg.setAttribute('viewBox', '320 0 400 480');
+        this.svgContainer.style.paddingBottom = '120%';
         this.hideBySize(this.large);
         this.hideBySize(this.medium);
+    }
+
+    componentWillMount() {
+        // IE makes everything difficult.
+        let ua = window.navigator.userAgent;
+        this.msie = !!ua.match(/MSIE|Trident/);
     }
 
     componentDidMount() {
@@ -108,8 +139,8 @@ export default class Home extends Component{
 
     render() {
         return (
-            <Slide className='slide--full-height' id='home-slide' rowClassNames='center-xs middle-xs'>
-                <span className='home-stuff' dangerouslySetInnerHTML={{__html: crest}} />
+            <Slide className={classNames({'slide--full-height': !this.msie})} id='home-slide' rowClassNames='center-xs middle-xs'>
+                <span id='svg-container' className='svg-container' dangerouslySetInnerHTML={{__html: crest}} />
             </Slide>
         );
     }

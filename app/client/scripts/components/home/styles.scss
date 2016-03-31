@@ -1,3 +1,21 @@
+.svg-container {
+    // Fluid SVG hack courtesy of shitty browsers.
+    display: block;
+    position: relative;
+    height: 0;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 50%; // This gets updated with JS
+
+    svg {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+}
+
 .doohickey {
     transition: all 0.2s ease;
     transform-origin: 50% 50%;
