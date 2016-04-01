@@ -10,10 +10,13 @@ export default class Home extends Component{
 
     constructor(props) {
         super(props);
-        this.mqls = [ // list of window.matchMedia() queries
-            window.matchMedia('(min-width: 1000px)'),
-            window.matchMedia('(min-width: 600px)')
-        ];
+        if (window.matchMedia) {
+            this.mqls = [ // list of window.matchMedia() queries
+                window.matchMedia('(min-width: 1000px)'),
+                window.matchMedia('(min-width: 600px)')
+            ];
+        }
+
         this.handleScroll = this.handleScroll.bind(this);
     }
 
@@ -115,10 +118,14 @@ export default class Home extends Component{
 
         window.addEventListener('scroll', () => {
             if (!ticking) {
-                window.requestAnimationFrame(() => {
+                if (window.requestAnimationFrame) {
+                    window.requestAnimationFrame(() => {
+                        this.handleScroll();
+                        ticking = false;
+                    });
+                } else {
                     this.handleScroll();
-                    ticking = false;
-                });
+                }
             }
             ticking = true;
         });
