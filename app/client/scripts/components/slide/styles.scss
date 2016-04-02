@@ -38,6 +38,10 @@
         max-width: 960px;
         margin: auto;
         padding: 20px 0;
+
+        @media (max-width: 48em) {
+            text-align: left;
+        }
     }
 
     .left-align {

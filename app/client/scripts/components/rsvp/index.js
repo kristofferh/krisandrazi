@@ -108,7 +108,7 @@ export default class RSVP extends Component {
                 <Row className='center-xs content-container'>
                     <Column xs='12' sm='8'>
                         <h2>{'RSVP'}</h2>
-                        <p>{'Let us know if you\'re coming.'}</p>
+                        <p>{'Please let us know if you\'re coming by September 16.'}</p>
                         <form className='rsvp-form' onSubmit={this.handleSubmit}>
                             <div className='form-group'>
                                 <label className='inline-label' htmlFor='name'>{'Your name:'}</label>

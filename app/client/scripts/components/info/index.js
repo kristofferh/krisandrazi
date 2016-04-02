@@ -43,7 +43,7 @@ let Info = React.createClass({
                         best friends Sara Fisher (thanks Sara!!).</p>
 
                         <p>Now they live together in Brooklyn with their cat.
-                        Kris is a web designer and Razi is graphic designer.
+                        Kris is a web designer and Razi is a graphic designer.
                         They both really like to travel, eat pizza, drink
                         champagne on New Years, be on boats, and design cool
                         things.</p>
