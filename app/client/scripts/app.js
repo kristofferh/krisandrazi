@@ -4,6 +4,7 @@ import '../styles/base';
 import Navigation from './components/navigation/';
 import Home from './components/home/';
 import Info from './components/info/';
+import Venue from './components/venue/';
 import RSVP from './components/rsvp/';
 
 let App = React.createClass({
@@ -14,6 +15,7 @@ let App = React.createClass({
                 <Navigation />
                 <Home />
                 <Info />
+                <Venue />
                 <RSVP />
             </div>
         );

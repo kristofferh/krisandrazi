@@ -1,18 +1,22 @@
+$border-bottom-input: 1px dashed rgba(255, 255, 255, 0.25);
+$border-bottom-input-focus: 1px solid rgba(255, 255, 255, 0.75);
+$border-bottom-transition: border-bottom 0.5s ease;
+
 .flat-input {
     box-sizing: border-box;
     background: transparent;
     border: none;
     border-radius: 0;
-    font-family: monospace;
+    font-family: inherit;
     padding: 6px 5px;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+    border-bottom: $border-bottom-input;
     color: #fff;
     outline: none;
     width: 100%;
-    transition: border-bottom 0.5s ease;
+    transition: $border-bottom-transition;
 
     &:focus {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+        border-bottom: $border-bottom-input-focus;
     }
 
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -59,17 +63,72 @@
         color: rgba(255, 255, 255, 0.5);
         right: 0;
     }
-}
 
-.form-group--conditional {
-    &.closed {
-        display: none;
+    &--label {
+        flex-wrap: wrap;
+    }
+
+    &--conditional {
+        &.closed {
+            display: none;
+        }
     }
 }
 
 .inline-label {
-    min-width: 100px;
+    min-width: 120px;
     text-align: right;
     margin-right: 10px;
 }
 
+.radio-group-label {
+    display: block;
+    width: 100%;
+    margin: 10px;
+}
+
+.radio-group {
+    margin: auto;
+}
+
+.checkbox-label {
+    position: relative;
+    margin: 10px;
+
+    input {
+        opacity: 0;
+        position: absolute;
+    }
+
+    .inner-label {
+        position: relative;
+        display: inline-block;
+        padding-left: 40px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            border-bottom: $border-bottom-input;
+            width: 30px;
+            transition: $border-bottom-transition;
+        }
+    }
+
+    input:focus ~ .inner-label {
+        &:before {
+            border-bottom: $border-bottom-input-focus;
+        }
+    }
+
+    input:checked ~ .inner-label {
+        &:after {
+            content: '\2714';
+            position: absolute;
+            font-size: 12px;
+            left: 12px;
+            top: 2px;
+        }
+    }
+}

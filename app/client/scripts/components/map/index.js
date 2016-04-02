@@ -31,7 +31,7 @@ export default class Map extends Component {
     render() {
         const glasserie = {lat: 40.737722, lng: -73.956176};
         return (
-            <section style={{height: '100vh', width: '100vw'}}>
+            <section style={{height: '75vh', width: '100vw'}}>
                 <GoogleMapLoader
                     containerElement = {
                         <div

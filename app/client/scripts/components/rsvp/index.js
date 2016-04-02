@@ -14,7 +14,9 @@ export default class RSVP extends Component {
         this.state = {
             name: '',
             email: '',
-            guest: false
+            attending: true,
+            guest: false,
+            guestName: null
         };
 
         this.errors = false;
@@ -103,8 +105,8 @@ export default class RSVP extends Component {
     render() {
         return (
             <Slide background='dark'>
-                <Row className='center-xs'>
-                    <Column xs='12' sm='6'>
+                <Row className='center-xs content-container'>
+                    <Column xs='12' sm='8'>
                         <h2>{'RSVP'}</h2>
                         <p>{'Let us know if you\'re coming.'}</p>
                         <form className='rsvp-form' onSubmit={this.handleSubmit}>
@@ -118,24 +120,28 @@ export default class RSVP extends Component {
                                 {this.state.emailError ? <span className='error'>{this.state.emailError}</span> : null}
                                 <input type='email' id='email' className='flat-input' onBlur={this.validateEmailChange} onChange={this.handleEmailChange} />
                             </div>
-                            <div className='form-group'>
-                                Will you be joining us?
-                                <label className='checkbox-inline'>
-                                    <input name='answer' type='radio' ref='answerYes' defaultChecked/>Yes!
-                                </label>
-                                <label className='checkbox-inline'>
-                                    <input name='answer' type='radio' ref='answerNo'/>Sorry, can't make it :(
-                                </label>
+                            <div className='form-group form-group--label'>
+                                <span className='radio-group-label'>{'Will you be joining us?'}</span>
+                                <div className='radio-group'>
+                                    <label className='checkbox-label'>
+                                        <input name='attending' type='radio' id='attendingYes' defaultChecked/><span className='inner-label'>{'Yes!'}</span>
+                                    </label>
+                                    <label className='checkbox-label'>
+                                        <input name='attending' type='radio' id='answerNo'/><span className='inner-label' htmlFor='attendingYes'>{'No :('}</span>
+                                    </label>
+                                </div>
                             </div>
-                            <div className='form-group--conditional'>
-                                <div className='form-group guest'>
-                                    {'Are you bringing a guest?'}
-                                    <label className='checkbox-inline'>
-                                        <input name='guest' type='radio' id='guestYes' onChange={this.handleGuestChange} value='yes'/>{'Yes'}
-                                    </label>
-                                    <label className='checkbox-inline'>
-                                        <input name='guest' type='radio' id='guestNo' defaultChecked onChange={this.handleGuestChange} value='no'/>{'No'}
-                                    </label>
+                            <div className='form-group--conditional form-group--label'>
+                                <div className='form-group form-group--label guest'>
+                                    <span className='radio-group-label'>{'Are you bringing a guest?'}</span>
+                                    <div className='radio-group'>
+                                        <label className='checkbox-label'>
+                                            <input name='guest' type='radio' id='guestYes' onChange={this.handleGuestChange} value='yes'/><span className='inner-label'>{'Yes'}</span>
+                                        </label>
+                                        <label className='checkbox-label'>
+                                            <input name='guest' type='radio' id='guestNo' defaultChecked onChange={this.handleGuestChange} value='no'/><span className='inner-label'>{'No'}</span>
+                                        </label>
+                                    </div>
                                 </div>
                                 <div className={classNames('form-group form-group--conditional', 'guest', {'closed': !this.state.guest})}>
                                     <label className='inline-label' htmlFor='guestName'>{'Guest\'s name:'}</label>

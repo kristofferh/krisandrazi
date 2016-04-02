@@ -17,10 +17,13 @@ module.exports = function(sequelize, DataTypes) {
         },
         attending: {
             type: DataTypes.BOOLEAN, // Yes or no.
-            allowNull: false
+            allowNull: false,
+            defaultValue: true
         },
         guest: {
-            type: DataTypes.BOOLEAN
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
         },
         guestName: {
             type: DataTypes.STRING

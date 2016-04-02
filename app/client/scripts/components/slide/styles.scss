@@ -3,6 +3,15 @@
 .slide {
     margin: 0;
 
+    h1,
+    h2 {
+        font-family: $font-family-title;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 25px;
+        margin-bottom: 0.25em;
+    }
+
     .slide__container {
         margin: 0;
     }
@@ -20,10 +29,18 @@
         color: $white;
     }
 
+    &--light {
+        background: $light-gray;
+        color: $black;
+    }
+
     .content-container {
         max-width: 960px;
         margin: auto;
+        padding: 20px 0;
     }
 
-
+    .left-align {
+        text-align: left;
+    }
 }
