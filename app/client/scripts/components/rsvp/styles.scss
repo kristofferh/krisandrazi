@@ -49,7 +49,7 @@ $border-bottom-transition: border-bottom 0.5s ease;
     border: none;
     padding: 8px 20px;
     color: #fff;
-    margin-top: 10px;
+    margin: 10px 0;
     outline: none;
 
     &:hover,
@@ -115,6 +115,7 @@ $border-bottom-transition: border-bottom 0.5s ease;
 
 .checkbox-label {
     position: relative;
+    display: inline-block;
     margin: 10px;
 
     @media (max-width: 48em) {

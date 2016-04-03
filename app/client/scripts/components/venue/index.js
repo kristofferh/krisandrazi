@@ -12,10 +12,12 @@ let Venue = React.createClass({
                 <Row className='center-xs content-container'>
                     <Column xs='12' sm='6'>
                         <h2>Venue</h2>
-                        <p>We will be partying at one of our favorite restaurants, Glasserie.
-                        Cool Fact! The building was originally built in 1806 as
-                        a glass factory. You can read the whole story here
-                        http://glasserienyc.com/</p>
+                        <p>We will be partying at one of our favorite restaurants, Glasserie, in the
+                        Greenpoint neighborhood of Brooklyn.</p>
+
+                        <p>Cool Fact! The building was originally built in 1806 as
+                        a glass factory. You can read the <a href='http://glasserienyc.com/' target='_blank'>whole story on their
+                        website</a></p>
                         <p>Our dinner will be held outdoors in a covered brick
                         courtyard, the weather in September should be very comfortable.</p>
                         <p>Cocktail attire is encouraged, so wear whatever makes you

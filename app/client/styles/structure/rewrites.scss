@@ -1,3 +1,5 @@
+@import 'variables';
+
 * {
     box-sizing: inherit;
 
@@ -56,7 +58,15 @@ textarea {
 }
 
 a {
+    color: $pink-accent;
     text-decoration: underline;
+    transition: all 0.2s ease;
+    // background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff), linear-gradient($pink-accent, $pink-accent);
+    // background-size: .05em 1px, .05em 1px, 1px 1px;
+    // background-repeat: no-repeat, no-repeat, repeat-x;
+    // text-shadow: 0.03em 0 #fff, -0.03em 0 #fff, 0 .03em #fff, 0 -0.03em #fff, 0.06em 0 #fff, -0.06em 0 #fff, 0.09em 0 #fff, -0.09em 0 #fff, 0.12em 0 #fff, -0.12em 0 #fff, 0.15em 0 #fff, -0.15em 0 #fff;
+    // background-position: 0 95%, 100% 95%, 0 95%;
+    // text-decoration: none;
 
     &:hover {
         text-decoration: none;

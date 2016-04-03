@@ -6,6 +6,7 @@ import Home from './components/home/';
 import Info from './components/info/';
 import Venue from './components/venue/';
 import RSVP from './components/rsvp/';
+import Footer from './components/footer/';
 
 let App = React.createClass({
 
@@ -17,6 +18,7 @@ let App = React.createClass({
                 <Info />
                 <Venue />
                 <RSVP />
+                <Footer />
             </div>
         );
     }

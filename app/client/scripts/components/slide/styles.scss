@@ -41,6 +41,10 @@
 
         @media (max-width: 48em) {
             text-align: left;
+
+            &.force-center {
+                text-align: center;
+            }
         }
     }
 

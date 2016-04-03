@@ -13,7 +13,8 @@ let Info = React.createClass({
                         <h1>{'Party'}</h1>
                         <p>Hey, we're getting married! And to celebrate we are
                         throwing a party with all our friends and families.</p>
-                        <p>Please join us on <strong>Friday September 23rd at 6pm</strong> for drinks,
+                        <p>Please join us on <strong>Friday September 23rd at 6pm</strong> at
+                        Glasserie in Brooklyn, NY, for drinks,
                         dinner, and dancing. We will make it all official at the
                         courthouse earlier in the day, so all you need to be prepared
                         for is party time.</p>
