@@ -1,6 +1,6 @@
 import {default as React, Component} from 'react';
 import ClassNames from 'classnames';
-
+import logo from './logo.svg';
 import './styles';
 
 export default class Navigation extends Component {
@@ -50,7 +50,9 @@ export default class Navigation extends Component {
         return (
             <nav className={ClassNames('main-nav', {'show-nav': this.state.showNav} )}>
                 <div className='nav-container'>
-                    <a href='#home' className='logo nav-item'></a>
+                    <a href='#home' className='logo nav-item'>
+                        <span id='svg-logo' className='svg-logo' dangerouslySetInnerHTML={{__html: logo}} />
+                    </a>
                     <div className='nav'>
                         <a href='#info' className='nav-item'>{'Info'}</a>
                         <a href='#rsvp' className='nav-item'>{'RSVP'}</a>
