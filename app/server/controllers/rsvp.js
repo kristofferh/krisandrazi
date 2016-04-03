@@ -9,7 +9,6 @@ var postRSVP = function(req, res) {
     var guest = req.body.guest;
     var guestName = req.body.guestName;
 
-    console.log(email, name);
     // Insert into db.
     models.RSVP.create({
         email: email,
@@ -17,8 +16,8 @@ var postRSVP = function(req, res) {
         attending: attending,
         guest: guest,
         guestName: guestName
-    }).then(function(user) {
-        res.json(user);
+    }).then(function() {
+        res.json({msg: 'Success!'});
     }).catch(models.Sequelize.ValidationError, function (err) {
         // Respond with validation errors.
         return res.status(422).json(err.errors);

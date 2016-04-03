@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Slide from '../slide';
 import Row from '../row';
 import Column from '../column';
+import Thanks from '../thanks';
 
 import './styles';
 
@@ -18,7 +19,8 @@ export default class RSVP extends Component {
             guest: false,
             guestName: null,
             nameError: false,
-            emailError: false
+            emailError: false,
+            success: false
         };
 
         this.errors = false;
@@ -111,13 +113,13 @@ export default class RSVP extends Component {
             .post('/rsvp')
             .type('form')
             .send(this.state)
-            .end(function(err, res) {
-
+            .end((err) => {
                 if (err) {
+                    // @todo: display an error message.
                     console.log('something got fucked')
                 } else {
                     // Success!
-                    console.log('cool');
+                    this.setState({success: true});
                 }
             });
     }
@@ -128,8 +130,8 @@ export default class RSVP extends Component {
                 <Row className='center-xs content-container'>
                     <Column xs='12' sm='8'>
                         <h2>{'RSVP'}</h2>
-                        <p>{'Please let us know if you\'re coming by September 16.'}</p>
-                        <form className='rsvp-form' onSubmit={this.handleSubmit}>
+                        <form className={classNames('rsvp-form', {'hide-form': this.state.success})} onSubmit={this.handleSubmit}>
+                            <p>{'Please let us know if you\'re coming by September 16.'}</p>
                             <div className='form-group'>
                                 <label className='inline-label' htmlFor='name'>{'Your name:'}</label>
                                 {this.state.nameError ? <span className='error'>{this.state.nameError}</span> : null}
@@ -170,6 +172,7 @@ export default class RSVP extends Component {
                             </div>
                             <button type='submit' ref='submitBtn' className='flat-button'>{'Submit →'}</button>
                         </form>
+                        {this.state.success ? <Thanks attending={this.state.attending} /> : null}
                     </Column>
                 </Row>
             </Slide>
