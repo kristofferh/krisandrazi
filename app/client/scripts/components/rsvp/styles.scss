@@ -37,16 +37,16 @@ $border-bottom-transition: border-bottom 0.5s ease;
 }
 
 .flat-button {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border: none;
-    padding: 3px 10px;
+    padding: 8px 20px;
     color: #fff;
-    margin-left: 10px;
+    margin-top: 10px;
     outline: none;
 
     &:hover,
     &:active {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
     }
 }
 
@@ -94,7 +94,7 @@ $border-bottom-transition: border-bottom 0.5s ease;
 .radio-group-label {
     display: block;
     width: 100%;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 .radio-group {

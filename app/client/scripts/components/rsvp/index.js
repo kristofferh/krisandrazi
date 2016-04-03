@@ -16,7 +16,9 @@ export default class RSVP extends Component {
             email: '',
             attending: true,
             guest: false,
-            guestName: null
+            guestName: null,
+            nameError: false,
+            emailError: false
         };
 
         this.errors = false;
@@ -25,13 +27,17 @@ export default class RSVP extends Component {
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleGuestChange = this.handleGuestChange.bind(this);
+        this.handleGuestNameChange = this.handleGuestNameChange.bind(this);
+        this.handleAttendingChange = this.handleAttendingChange.bind(this);
         this.validateNameChange = this.validateNameChange.bind(this);
         this.validateEmailChange = this.validateEmailChange.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        if(this.validateNameChange()) {
+        if(this.validateNameChange() && this.validateEmailChange()) {
+            // Disable the button.
+            this.refs.submitBtn.setAttribute('disabled', true);
             this.send();
         }
     }
@@ -42,6 +48,11 @@ export default class RSVP extends Component {
             this.setState({nameError: false});
         }
         this.setState({name: name});
+    }
+
+    handleGuestNameChange(e) {
+        let name = e.target.value.trim();
+        this.setState({guestName: name});
     }
 
     validateNameChange() {
@@ -66,6 +77,15 @@ export default class RSVP extends Component {
             this.setState({guest: true});
         } else {
             this.setState({guest: false});
+        }
+    }
+
+    handleAttendingChange(e) {
+        let el = e.target;
+        if (el.id === 'attendingYes') {
+            this.setState({attending: true});
+        } else {
+            this.setState({attending: false});
         }
     }
 
@@ -124,14 +144,14 @@ export default class RSVP extends Component {
                                 <span className='radio-group-label'>{'Will you be joining us?'}</span>
                                 <div className='radio-group'>
                                     <label className='checkbox-label'>
-                                        <input name='attending' type='radio' id='attendingYes' defaultChecked/><span className='inner-label'>{'Yes!'}</span>
+                                        <input name='attending' type='radio' id='attendingYes' defaultChecked onChange={this.handleAttendingChange}/><span className='inner-label'>{'Yes!'}</span>
                                     </label>
                                     <label className='checkbox-label'>
-                                        <input name='attending' type='radio' id='answerNo'/><span className='inner-label' htmlFor='attendingYes'>{'No :('}</span>
+                                        <input name='attending' type='radio' id='attendingNo' onChange={this.handleAttendingChange}/><span className='inner-label' htmlFor='attendingYes'>{'No :('}</span>
                                     </label>
                                 </div>
                             </div>
-                            <div className='form-group--conditional form-group--label'>
+                            <div className={classNames('form-group--conditional', 'form-group--label', {'closed': !this.state.attending})}>
                                 <div className='form-group form-group--label guest'>
                                     <span className='radio-group-label'>{'Are you bringing a guest?'}</span>
                                     <div className='radio-group'>
@@ -145,10 +165,10 @@ export default class RSVP extends Component {
                                 </div>
                                 <div className={classNames('form-group form-group--conditional', 'guest', {'closed': !this.state.guest})}>
                                     <label className='inline-label' htmlFor='guestName'>{'Guest\'s name:'}</label>
-                                    <input type='text' id='guestName' ref='guestName' className='flat-input' />
+                                    <input type='text' id='guestName' onChange={this.handleGuestNameChange} className='flat-input' />
                                 </div>
                             </div>
-                            <button type='submit' className='flat-button'>{'Submit →'}</button>
+                            <button type='submit' ref='submitBtn' className='flat-button'>{'Submit →'}</button>
                         </form>
                     </Column>
                 </Row>

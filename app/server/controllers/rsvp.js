@@ -4,12 +4,19 @@ var models = require('../models/');
 // Endpoint for post signup
 var postRSVP = function(req, res) {
     var email = req.body.email;
+    var name = req.body.name;
+    var attending = req.body.attending;
+    var guest = req.body.guest;
+    var guestName = req.body.guestName;
 
-    console.log(email);
+    console.log(email, name);
     // Insert into db.
     models.RSVP.create({
-        email: email
-        // @todo: add more fields
+        email: email,
+        name: name,
+        attending: attending,
+        guest: guest,
+        guestName: guestName
     }).then(function(user) {
         res.json(user);
     }).catch(models.Sequelize.ValidationError, function (err) {
