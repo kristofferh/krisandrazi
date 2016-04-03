@@ -1,7 +1,7 @@
 @import 'app/client/styles/structure/variables';
 
 .main-nav {
-    background-color: $black;
+    background-color: darken($black, 100%);
     color: $white;
 
     height: 60px;
@@ -26,12 +26,12 @@
 
     .nav-item {
         color: $white;
-        font-size: 12px;
+        font-size: 13px;
         line-height: 60px;
         text-transform: uppercase;
         text-decoration: none;
         display: inline-block;
-        margin-left: 10px;
+        margin-left: 20px;
 
         &.active {
         }
@@ -40,6 +40,10 @@
     .logo {
         height: 45px;
         width: 45px;
+
+        .svg-logo {
+            pointer-events: none;
+        }
     }
 
     .nav {

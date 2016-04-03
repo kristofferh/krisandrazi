@@ -116,7 +116,6 @@ export default class RSVP extends Component {
             .end((err) => {
                 if (err) {
                     // @todo: display an error message.
-                    console.log('something got fucked')
                 } else {
                     // Success!
                     this.setState({success: true});
@@ -126,7 +125,7 @@ export default class RSVP extends Component {
 
     render() {
         return (
-            <Slide background='dark'>
+            <Slide background='dark' id='rsvp'>
                 <Row className='center-xs content-container'>
                     <Column xs='12' sm='8'>
                         <h2>{'RSVP'}</h2>

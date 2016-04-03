@@ -13,9 +13,9 @@ html {
 }
 
 body {
-    font-family: 'Courier New', monospace;
+    font-family: $font-family-monospace;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 ::-moz-selection {

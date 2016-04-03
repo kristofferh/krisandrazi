@@ -90,7 +90,7 @@ $border-bottom-transition: border-bottom 0.5s ease;
 }
 
 .inline-label {
-    min-width: 120px;
+    min-width: 130px;
     text-align: right;
     margin-right: 10px;
 
@@ -116,6 +116,11 @@ $border-bottom-transition: border-bottom 0.5s ease;
 .checkbox-label {
     position: relative;
     margin: 10px;
+
+    @media (max-width: 48em) {
+        display: block;
+        margin: 10px 0;
+    }
 
     input {
         opacity: 0;
@@ -146,7 +151,8 @@ $border-bottom-transition: border-bottom 0.5s ease;
 
     input:checked ~ .inner-label {
         &:after {
-            content: '\2714';
+            content: '\2713';
+            color: #fff;
             position: absolute;
             font-size: 12px;
             left: 12px;
