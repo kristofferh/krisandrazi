@@ -15,7 +15,7 @@ let Venue = React.createClass({
                         <p>We will be partying at one of our favorite restaurants, Glasserie, in the
                         Greenpoint neighborhood of Brooklyn.</p>
 
-                        <p>Cool Fact! The building was originally built in 1806 as
+                        <p>Cool Fact! The building was originally built in 1860 as
                         a glass factory. You can read the <a href='http://glasserienyc.com/' target='_blank'>whole story on their
                         website</a></p>
                         <p>Our dinner will be held outdoors in a covered brick
