@@ -146,7 +146,7 @@ export default class Home extends Component{
 
     render() {
         return (
-            <Slide className={classNames({'slide--full-height': !this.msie})} id='home' rowClassNames='center-xs middle-xs'>
+            <Slide className={classNames('home-slide', {'slide--full-height': !this.msie})} id='home' rowClassNames='center-xs middle-xs'>
                 <span id='svg-container' className='svg-container' dangerouslySetInnerHTML={{__html: crest}} />
             </Slide>
         );

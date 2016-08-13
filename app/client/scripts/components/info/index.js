@@ -3,12 +3,15 @@ import Slide from '../slide';
 import Row from '../row';
 import Column from '../column';
 
+import './styles';
+
 let Info = React.createClass({
 
     render() {
         return (
-            <Slide background='light' id='info'>
-                <Row className='center-xs content-container between-sm'>
+            <Slide background='light' id='info' className='info-slide'>
+                <img src='/images/dorks.jpg' alt='dummies' className='dummies' />
+                <Row className='center-xs content-container between-sm padding-top'>
                     <Column xs='12' sm='6' className='left-align'>
                         <h1>{'Party'}</h1>
                         <p>Hey, we're getting married! And to celebrate we are
