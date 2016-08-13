@@ -13,23 +13,27 @@ let Info = React.createClass({
                         <h1>{'Party'}</h1>
                         <p>Hey, we're getting married! And to celebrate we are
                         throwing a party with all our friends and families.</p>
-                        <p>Please join us on <strong>Friday September 23rd at 6pm</strong> at
+
+                        <p>Please join us on <strong>Friday September 23rd at 7pm</strong> at
                         Glasserie in Brooklyn, NY, for drinks,
                         dinner, and dancing. We will make it all official at the
-                        courthouse earlier in the day, so all you need to be prepared
+                        courthouse earlier, so all you need to be prepared
                         for is party time.</p>
 
                         <h2>Gifts</h2>
-                        <p>We are going to be setting up a system to accept
-                        gifts soon, we will let you know when it's up and
-                        running! Since we live together and are lucky to have
+                        <p>Since we live together and are lucky to have
                         just about everything we need we won't be registering
                         anywhere, but any contribution towards our honey moon
-                        adventure would be graciously accepted.</p>
+                        adventure (Tokyo! Bangkok! Phuket! Tokyo!) would be
+                        graciously accepted.</p>
+
+                        <p>You can find us on <a href='https://www.zola.com/registry/krisandraziparty' target='_blank'>zola.com</a>,
+                        or if you are familiar with Venmo you can send creative emoji
+                        subject lines to <strong>@kristofferh</strong> 😎 👋.</p>
 
                         <p>It is a huge gift to us to have all of you make the
-                        trek to see us in New York. So thank you so much!!
-                        Tack så mycket!! See you soon!</p>
+                        trek to see us in New York. So thank you so much!
+                        Tack så mycket! See you soon!</p>
 
                         <p>xoxo,</p>
                         <p>K + R</p>
